@@ -1,0 +1,29 @@
+{
+  "name": "spotisearch",
+  "version": "1.0.0",
+  "description": "**SpotiSearch**",
+  "homepage": "https://github.com/Malachitopp/SpotiSearch#readme",
+  "bugs": {
+    "url": "https://github.com/Malachitopp/SpotiSearch/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Malachitopp/SpotiSearch.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^26.5.0",
+    "@types/pg": "^8.23.1",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "pg": "^8.23.0"
+  }
+}
