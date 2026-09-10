@@ -49,7 +49,9 @@ export async function fetchPage(title:string) {
     const data = await response.json();
     return data;
 }
- const releases:Release[] = [];
+
+const releases:Release[] = [];
+
 export async function parse(title:string){
     const data = await fetchPage(title);
     const htmlString = data.parse.text;

@@ -40,5 +40,13 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
-  }
+    "noEmit": true,
+    "rewriteRelativeImportExtensions":true,
+    "erasableSyntaxOnly":true,
+    
+
+
+    
+  },
+  "exclude": ["src/frontend", "node_modules", "dist"]
 }
