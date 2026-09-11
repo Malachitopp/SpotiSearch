@@ -30,11 +30,11 @@ for (const user of users.rows){
     const following = await getFollowing(accessToken) 
 
     for (const artist of following){
-        const artistId = await pool.query(`INSERT INTO artists (name) VALUES ($1)
-            ON CONFLICT (name) DO UPDATE SET name = EXCLUDED.name
-            RETURNING id`,[artist.name])
+        const artistId = await pool.query(`INSERT INTO artists (name, spotify_id) VALUES ($1,$2)
+            ON CONFLICT (name) DO UPDATE SET spotify_id =EXCLUDED.spotify_id
+            RETURNING id`,[artist.name, artist.id ])
         
-        await pool.query(`INSERT INTO user_artists VALUES($1, $2)
+        await pool.query(`INSERT INTO user_artists (user_id, artist_id) VALUES($1, $2)
             ON CONFLICT DO NOTHING
                 `, [user.id, artistId.rows[0].id])
         

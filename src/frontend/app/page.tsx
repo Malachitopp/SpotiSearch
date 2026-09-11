@@ -12,7 +12,7 @@ export default async function Home(
     return <a href = "http://127.0.0.1:3001/login"> Connect Spotify</a>;
   }
   
-  const res = await fetch("http://localhost:3001/releases/upcoming", {
+  const res = await fetch(`http://localhost:3001/releases/upcoming?user=${user}`, {
     cache: "no-store" });
   const releases = await res.json() 
 

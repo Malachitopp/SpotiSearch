@@ -59,20 +59,20 @@ authRouter.get('/callback', async function(req:Request, res:Response) {
 
     });
     if (!tokenRes.ok){
-        return res.status(500).send(`Toiken exchange failed: ${await tokenRes.text()}`);
+        return res.status(500).send(`Token exchange failed: ${await tokenRes.text()}`);
     }
     const token = await tokenRes.json() 
 
     const accountId = await getUser(token.access_token) 
 
-    await pool.query(
+    const userResult = await pool.query(
         `INSERT INTO users (spotify_user, refresh_token) VALUES ($1,$2)
         ON CONFLICT (spotify_user) DO UPDATE SET refresh_token = EXCLUDED.refresh_token
         RETURNING id`,
         [accountId, token.refresh_token]
     );
 
-    res.send("Connected, you can close this tab ") 
+    res.redirect(`http://localhost:3000/?user=${userResult.rows[0].id}`)
 
     
 });
